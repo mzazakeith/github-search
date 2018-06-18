@@ -7,8 +7,8 @@ import {SearchService} from '../services/search.service';
     styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-    private profile: any[];
-    private repos: any[];
+    profile: any[];
+    repos: any[];
     username: string;
 
     constructor(private profileService: SearchService) {
