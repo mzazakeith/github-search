@@ -1,0 +1,43 @@
+<app-navbar></app-navbar>
+<div class="container-fluid">
+
+  <form action="">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search" [(ngModel)]="username" name="username" (keyup)="findProfile()">
+    </div>
+  </form>
+
+  <div *ngIf="profile">
+    <div class="panel panel-default">
+      <div class="panel panel-heading">
+        <span *ngIf="profile.name">{{profile.name}}|</span>{{profile.login}}
+        <span *ngIf="profile.company">{{profile.company}}</span>
+      </div>
+    </div>
+    <div class="panel panel-body">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="{{profile.avatar_url}}" class="img-fluid">
+        </div>
+        <div class="col-md-6">
+          <ul class="list-group">
+            <li class="list-group-item" *ngIf="profile.bio">User bio: {{profile.bio}}</li>
+            <li class="list-group-item" *ngIf="profile.email">Email: {{profile.email}}</li>
+            <li class="list-group-item">Followers: {{profile.followers}}</li>
+            <li class="list-group-item">Following: {{profile.following}}</li>
+            <li class="list-group-item">Public gist: {{profile.public_gists}}</li>
+            <li class="list-group-item">Repositories: {{profile.public_repos}}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <h3>REPOSITORIES</h3>
+        <div class="panel panel-body " *ngFor="let repo of repos">
+          <p>{{repo.name}}</p><a href="{{html_url}}" target="_blank"><button class="btn btn-success ">View</button></a>
+          <p>{{repo.description}}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
